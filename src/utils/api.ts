@@ -1,10 +1,10 @@
+import { API_HOSTNAME } from "@/constants/constants";
 import { Category, Lang, Question, Topic } from "@/interfaces/interfaces";
 import axios from "axios";
 
-const HOSTNAME = "https://top-pick-api.herokuapp.com"; //" http://localhost:4001";;
 export const getCategories = async (lang: Lang): Promise<Category[] | null> => {
   try {
-    const response = await axios.get(`${HOSTNAME}/categories/` + lang, {
+    const response = await axios.get(`${API_HOSTNAME}/categories/` + lang, {
       headers: {},
     });
     return response.status === 200 ? response.data : null;
@@ -18,7 +18,7 @@ export const getQuestionsByTopic = async (
   id: number
 ): Promise<Question[] | null> => {
   try {
-    const response = await axios.get(`${HOSTNAME}/questions/topic/${id}`, {
+    const response = await axios.get(`${API_HOSTNAME}/questions/topic/${id}`, {
       headers: {},
     });
     return response.status === 200 ? response.data : null;
@@ -30,7 +30,7 @@ export const getQuestionsByTopic = async (
 
 export const getTopic = async (id: number): Promise<Topic | null> => {
   try {
-    const response = await axios.get(`${HOSTNAME}/topic/` + id, {
+    const response = await axios.get(`${API_HOSTNAME}/topic/` + id, {
       headers: {},
     });
     return response.status === 200 ? response.data : null;
@@ -45,7 +45,7 @@ export const getTopicsAlphabetical = async (
 ): Promise<Topic[] | null> => {
   try {
     const response = await axios.get(
-      `${HOSTNAME}/topics/alphabetical/` + lang,
+      `${API_HOSTNAME}/topics/alphabetical/` + lang,
       {
         headers: {},
       }
@@ -59,7 +59,7 @@ export const getTopicsAlphabetical = async (
 
 export const getAvailableLanguages = async (): Promise<Lang[] | null> => {
   try {
-    const response = await axios.get(`${HOSTNAME}/languages/`, {
+    const response = await axios.get(`${API_HOSTNAME}/languages/`, {
       headers: {},
     });
     return response.status === 200 ? response.data : null;

@@ -8,6 +8,7 @@ import {
 } from "@/utils/api";
 import { getLangUrl } from "@/utils/utilts";
 import { Lang } from "@/interfaces/interfaces";
+import { SITE_HOSTNAME } from "@/constants/constants";
 
 export enum ActionTypes {
   ALERT = "ALERT",
@@ -86,12 +87,12 @@ export const actions: ActionTree<State, State> & Actions = {
       commit(MutationTypes.SET_CURR_LANGUAGE, selectedLang);
       dispatch(ActionTypes.CONTEXT_RELOAD);
     } else {
-      window.location.href = "http://localhost:8080/" + Lang.EN;
+      window.location.href = SITE_HOSTNAME + Lang.EN;
     }
   },
 
   async [ActionTypes.SET_CURR_LANGUAGE]({ dispatch, state }, currentLanguage) {
-    document.location.href = "http://localhost:8080/" + currentLanguage;
+    document.location.href = SITE_HOSTNAME + currentLanguage;
     state.currentLanguage = currentLanguage;
     dispatch(ActionTypes.CONTEXT_RELOAD);
   },

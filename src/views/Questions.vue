@@ -49,19 +49,17 @@
 </template>
 
 <script lang="ts">
-import { Lang, Question, Topic, TopicLevel } from "@/interfaces/interfaces";
+import { Question, Topic, TopicLevel } from "@/interfaces/interfaces";
 import { getQuestionsByTopic, getTopic } from "@/utils/api";
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 import SearchBar from "../components/SearchBar.vue";
 import {
   getTopicLevelLabel,
   getTopicLevelColor,
-  getQuestionsHtml,
-  getHtmlTemplate,
-  getHtmlTemplate2,
+  downloadPDF,
 } from "../utils/utilts";
 import SectionList from "../components/SectionList.vue";
-import { jsPDF } from "jspdf";
+
 @Component({
   components: {
     SectionList,
@@ -69,17 +67,21 @@ import { jsPDF } from "jspdf";
   },
 })
 export default class Questions extends Vue {
-  questions: Question[] = [];
-  topic: Topic = {
+  private questions: Question[] = [];
+  private topic: Topic = {
     id: -1,
     title: "",
   };
 
-  getTopicLevelLabel(level: TopicLevel) {
+  getTopicLevelLabel(level: TopicLevel): string {
     return getTopicLevelLabel(level);
   }
-  getTopicLevelColor(level: TopicLevel) {
+  getTopicLevelColor(level: TopicLevel): string {
     return getTopicLevelColor(level);
+  }
+
+  @Watch("topic", { immediate: true }) onItemChanged() {
+    console.log("TTTTTTTTT", this.topic);
   }
 
   goQuestions(id: number): void {
@@ -90,7 +92,7 @@ export default class Questions extends Vue {
     window.open(route.href);
   }
 
-  async mounted() {
+  async mounted(): Promise<void> {
     if (this.$route.query.id) {
       const retrievedTopic = await getTopic(
         parseInt(this.$route.query.id as string)
@@ -105,19 +107,13 @@ export default class Questions extends Vue {
       );
       if (retrievedQuestions) {
         this.questions = retrievedQuestions;
+        console.log("thiii", this.questions);
       }
     }
   }
 
-  async downloadPDF() {
-    const DATA = this.$refs.content.innerHTML;
-    alert(this.$refs.content.innerHTML);
-    const doc: jsPDF = new jsPDF("p", "mm", "a4");
-    doc.html(DATA, {
-      callback: (doc) => {
-        doc.output("dataurlnewwindow");
-      },
-    });
+  downloadPDF(): void {
+    downloadPDF(this.topic.title, this.questions);
   }
 }
 </script>
@@ -206,6 +202,7 @@ export default class Questions extends Vue {
   flex-direction: column;
 }
 .download-button {
+  cursor: pointer;
   text-transform: uppercase;
   text-decoration: underline;
   color: black;
