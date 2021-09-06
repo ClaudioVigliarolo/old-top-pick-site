@@ -1,22 +1,18 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
-
-// Import Bootstrap an BootstrapVue CSS files (order is important)
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
-import "./styles/styles.css";
+import Antd from "ant-design-vue";
+import "ant-design-vue/dist/antd.css";
 import store, { ActionTypes } from "@/store";
-// Make BootstrapVue available throughout your project
+import "./styles/styles.css";
 
 async function main() {
   await store.dispatch(ActionTypes.STARTUP);
 }
 
-Vue.use(BootstrapVue);
+Vue.use(Antd);
+
 // Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin);
 Vue.config.productionTip = false;
 
 new Vue({

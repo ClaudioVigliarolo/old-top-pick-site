@@ -1,26 +1,30 @@
 <template>
-  <b-navbar class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-      <a class="navbar-brand brand" href="/">TOP Pick</a>
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <select v-model="currentLanguage" class="language-input">
-              <option
-                v-for="lang in languages"
-                :value="lang"
-                v-bind:key="lang"
-                :selected="lang === currentLanguage"
-              >
-                {{ getLanguageLabel(lang) }}
-              </option>
-            </select>
-          </li>
-        </ul>
-      </div>
+  <div class="navbar">
+    <div class="navbar-brand">
+      <a class="text-brand" href="/">TOP Pick</a>
     </div>
-  </b-navbar>
+
+    <div class="navbar-sections">
+      <ul class="sections-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+    <div class="navbar-language">
+      <select v-model="currentLanguage" class="language-input">
+        <option
+          v-for="lang in languages"
+          :value="lang"
+          v-bind:key="lang"
+          :selected="lang === currentLanguage"
+        >
+          {{ getLanguageLabel(lang) }}
+        </option>
+      </select>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -52,16 +56,50 @@ export default class NavBar extends Vue {
 </script>
 
 <style scoped>
-.navbar-dark .navbar-nav .nav-link {
-  color: orange !important;
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  background-color: red;
+}
+
+.navbar-sections {
+  display: flex;
+  background-color: blue;
+  flex-direction: row;
+}
+.navbar-language {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-brand {
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+}
+.navbar-brand {
+  display: flex;
+  background-color: pink;
+  padding-left: 15px;
+}
+
+.sections-list {
+  text-align: left;
+  display: inline-block;
+  list-style-type: none;
+
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+  background-color: aqua;
 }
 
 .language-input {
   background-color: transparent !important;
-  border-color: red;
   color: white;
   border-width: 0;
   font-size: 18px;
+  width: 150px;
 }
 
 .brand {

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="bar-container">
-      <b-form-input
+      <a-input
         placeholder="Search a Topic"
         v-model="searchKeyword"
         :value="searchKeyword"
@@ -112,6 +112,14 @@ export default class SearchBar extends Vue {
 }
 .text-input {
   width: 250px;
+  height: 40px;
+  font-size: 17px;
+}
+
+.text-input:focus {
+  outline: none !important;
+  border: 1px solid white;
+  box-shadow: 0 0 10px white;
 }
 
 .bar-container {

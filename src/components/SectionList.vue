@@ -41,10 +41,12 @@ export default class SectionList extends Vue {
 .content-container {
   display: flex;
   background-color: white;
-  width: 90%;
-  padding: 5%;
+  width: 70%;
+  padding: 3%;
+  padding-top: 2%;
   flex-direction: column;
   margin-top: 20px;
+  border-radius: 5px;
 }
 
 .container {

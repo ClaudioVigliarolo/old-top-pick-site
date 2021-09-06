@@ -38,9 +38,6 @@
           </li>
         </ul>
       </div>
-      <div ref="content">
-        <h1>ehi ciao</h1>
-      </div>
       <div class="questions-footer">
         <div class="download-button" @click="downloadPDF()">Download PDF</div>
       </div>
@@ -78,10 +75,6 @@ export default class Questions extends Vue {
   }
   getTopicLevelColor(level: TopicLevel): string {
     return getTopicLevelColor(level);
-  }
-
-  @Watch("topic", { immediate: true }) onItemChanged() {
-    console.log("TTTTTTTTT", this.topic);
   }
 
   goQuestions(id: number): void {
@@ -130,6 +123,7 @@ export default class Questions extends Vue {
   color: orange;
   text-transform: capitalize;
   margin-bottom: 30px;
+  font-size: 40px;
 }
 
 .header-container {
@@ -139,7 +133,7 @@ export default class Questions extends Vue {
 .content-container {
   display: flex;
   background-color: white;
-  width: 90%;
+  width: 70%;
   padding: 5%;
   flex-direction: column;
 }
@@ -157,14 +151,12 @@ export default class Questions extends Vue {
 
 .container {
   display: flex;
+  justify-content: center;
 }
 .question-item {
   margin-bottom: 10px;
   text-align: left;
-}
-.question-title {
-  color: black;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .questions-info {
@@ -173,16 +165,11 @@ export default class Questions extends Vue {
   font-weight: 500;
   text-transform: uppercase;
   margin-bottom: 5px;
+  font-size: 15px;
 }
 
 .questions-info-value {
   font-weight: 200;
-}
-
-.topic-title {
-  color: orange;
-  cursor: pointer;
-  margin-bottom: 10px;
 }
 
 .related-topics {
@@ -190,13 +177,13 @@ export default class Questions extends Vue {
   text-transform: uppercase;
   text-decoration: underline;
   margin-right: 12px;
+  font-size: 15px;
   cursor: pointer;
 }
 
 .questions-footer {
   padding-top: 50px;
   padding-bottom: 50px;
-
   display: flex;
   justify-content: start;
   flex-direction: column;
@@ -207,5 +194,6 @@ export default class Questions extends Vue {
   text-decoration: underline;
   color: black;
   text-align: left;
+  font-size: 17px;
 }
 </style>
