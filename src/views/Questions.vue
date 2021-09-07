@@ -17,14 +17,13 @@
         </div>
         <div class="questions-info questions-info-related">
           <span style="margin-right: 5px"> Related:</span>
-          <div
+          <router-link
             class="related-topics"
             v-for="rel in topic.related"
             v-bind:key="rel.id"
-            @click="goQuestions(rel.id)"
+            :to="{ path: getRoutePath(), query: { id: rel.id.toString() } }"
+            >{{ rel.title }}</router-link
           >
-            {{ rel.title }}
-          </div>
         </div>
       </div>
       <div class="questions-container">
@@ -85,8 +84,23 @@ export default class Questions extends Vue {
     window.open(route.href);
   }
 
+  @Watch("$route.query.id")
+  "$route.query.id"() {
+    this.retrieveData();
+  }
+
   async mounted(): Promise<void> {
-    console.log("orarotiro", this.$route);
+    this.retrieveData();
+  }
+
+  getRoutePath(): string {
+    return this.$route.path;
+  }
+  downloadPDF(): void {
+    downloadPDF(this.topic.title, this.questions);
+  }
+
+  async retrieveData(): Promise<void> {
     if (this.$route.query.id) {
       const retrievedTopic = await getTopic(
         parseInt(this.$route.query.id as string)
@@ -105,10 +119,6 @@ export default class Questions extends Vue {
       }
     }
   }
-
-  downloadPDF(): void {
-    downloadPDF(this.topic.title, this.questions);
-  }
 }
 </script>
 
@@ -118,6 +128,7 @@ export default class Questions extends Vue {
   flex-direction: column;
   justify-content: flex-start;
   max-width: 600px;
+  min-height: 500px;
 }
 .questions-header {
   text-align: left;

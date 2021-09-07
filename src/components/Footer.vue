@@ -2,35 +2,36 @@
   <div class="container">
     <div class="foot-container">
       <div class="foot-item-contacts">
-        <h4 class="foot-item-header">Contacts:</h4>
-        <div class="foot-item-content-title">
+        <h4 class="footer-header">Contacts:</h4>
+        <div class="footer-description text-contact">
           Email:
-          <span class="foot-item-content-value"> top-pick@mail.com </span>
+          <span class="footer-description font-italic">
+            top-pick@mail.com
+          </span>
         </div>
-        <div class="foot-item-content-title">
-          diveloper:
-          <span class="foot-item-content-value">
+        <div class="footer-description text-contact">
+          Developer:
+          <span class="footer-description font-italic">
             claudio.vigliarolo@techie.com
           </span>
         </div>
-        <div class="foot-item-content-title line-container">
+        <div class="footer-description instagram-container text-contact">
           Follow us on Instagram:
           <a-icon
             type="instagram"
-            style="color: white; cursor: pointer"
+            class="icon-instagram"
             onclick=" window.open('https://www.instagram.com/topick.community/','_blank')"
           />
         </div>
       </div>
       <div class="foot-item-section">
-        <h4 class="foot-item-header">Sections:</h4>
-        <a class="foot-item-section-text" :href="getAppPath()"> Get The App </a>
+        <h4 class="footer-header">Sections:</h4>
+        <a class="footer-description" :href="getAppPath()"> Get The App </a>
         <a
-          class="foot-item-section-text"
+          class="footer-description"
           onclick="
             window.open(
               'https://www.paypal.com/donate?hosted_button_id=F5CKWMKTQJE9G',
-              '_blank'
             )
           "
         >
@@ -38,11 +39,11 @@
         </a>
       </div>
       <div class="foot-item-info">
-        <h4 class="foot-item-header">General Informations:</h4>
-        <div class="foot-item-info-text">
+        <h4 class="footer-header">General Informations:</h4>
+        <div class="footer-description text-center">
           Top Pick is a company designed for helping people find great topics
         </div>
-        <div class="foot-item-info-text">
+        <div class="footer-description text-center">
           &copy; Copyright {{ new Date().getFullYear() }}, TopPick Company
         </div>
       </div>
@@ -64,6 +65,30 @@ export default class NavBar extends Vue {
 </script>
 
 <style scoped>
+.footer-header {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+.footer-description {
+  color: white;
+  text-align: left;
+}
+
+.font-italic {
+  font-style: italic;
+}
+
+.icon-instagram {
+  color: white;
+  cursor: pointer;
+}
+
+.text-center {
+  text-align: center;
+}
+
 .container {
   height: 400px;
   display: flex;
@@ -73,38 +98,15 @@ export default class NavBar extends Vue {
 }
 .foot-container {
   display: grid;
-  background-color: rgba(189, 124, 3, 0.15);
+  background-color: rgba(189, 124, 3, 0.2);
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-gap: 20px;
-  padding: 10px;
+  border-radius: 5px;
+  grid-gap: 30px;
+  padding: 20px;
   width: 80%;
 }
 
-.foot-item-header {
-  color: white;
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 20px;
-}
-.foot-item-content-title {
-  color: white;
-  text-align: left;
-}
-.foot-item-content-value {
-  color: white;
-  font-style: italic;
-}
-
-.foot-item-info-text {
-  color: white;
-  text-align: center;
-}
-
-.foot-item-section-text {
-  color: white;
-  text-align: left;
-}
 .foot-item-contacts {
   display: flex;
   flex-direction: column;
@@ -118,7 +120,7 @@ export default class NavBar extends Vue {
   max-width: 400px;
 }
 
-.line-container {
+.instagram-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -132,5 +134,34 @@ export default class NavBar extends Vue {
   display: flex;
   flex-direction: column;
   padding: 10px;
+}
+
+.text-contact {
+  text-align: left !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .foot-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+  }
+
+  .container {
+    height: 500px;
+    display: flex;
+    margin-top: 200px;
+    padding-bottom: 50px;
+    justify-content: center;
+  }
+
+  .footer-description {
+    text-align: center;
+  }
+
+  .text-contact {
+    margin-left: 20px;
+  }
 }
 </style>

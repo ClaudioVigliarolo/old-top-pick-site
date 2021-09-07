@@ -90,30 +90,28 @@ export default class SearchBar extends Vue {
 </script>
 
 <style scoped>
-.my-class /deep/ .dropdown-menu {
-  max-height: 250px;
-  overflow-y: auto;
-}
-
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .select-input {
-  background-color: transparent !important;
+  background-color: orange !important;
   color: white;
   font-size: 18px;
   border: solid 1px white;
   padding: 5px;
   width: 250px;
   text-transform: capitalize;
+  border-radius: 3px;
 }
 .text-input {
   width: 250px;
   height: 40px;
   font-size: 17px;
+  border-radius: 3px;
 }
 
 .text-input:focus {

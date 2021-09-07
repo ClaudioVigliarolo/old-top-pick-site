@@ -87,7 +87,7 @@ export const actions: ActionTree<State, State> & Actions = {
       commit(MutationTypes.SET_CURR_LANGUAGE, selectedLang);
       dispatch(ActionTypes.CONTEXT_RELOAD);
     } else {
-      window.location.href = SITE_HOSTNAME + Lang.EN;
+      window.location.href = SITE_HOSTNAME + "/" + Lang.EN;
     }
   },
 
