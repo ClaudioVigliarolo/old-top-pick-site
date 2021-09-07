@@ -86,6 +86,7 @@ export default class Questions extends Vue {
   }
 
   async mounted(): Promise<void> {
+    console.log("orarotiro", this.$route);
     if (this.$route.query.id) {
       const retrievedTopic = await getTopic(
         parseInt(this.$route.query.id as string)

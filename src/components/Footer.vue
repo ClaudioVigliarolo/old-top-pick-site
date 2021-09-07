@@ -24,12 +24,18 @@
       </div>
       <div class="foot-item-section">
         <h4 class="foot-item-header">Sections:</h4>
-        <router-link class="foot-item-section-text" to="/get-app">
-          Get The App
-        </router-link>
-        <router-link class="foot-item-section-text" to="/donation">
+        <a class="foot-item-section-text" :href="getAppPath()"> Get The App </a>
+        <a
+          class="foot-item-section-text"
+          onclick="
+            window.open(
+              'https://www.paypal.com/donate?hosted_button_id=F5CKWMKTQJE9G',
+              '_blank'
+            )
+          "
+        >
           Support us
-        </router-link>
+        </a>
       </div>
       <div class="foot-item-info">
         <h4 class="foot-item-header">General Informations:</h4>
@@ -44,12 +50,17 @@
   </div>
 </template>
 <script lang="ts">
+import { SITE_HOSTNAME } from "@/constants/constants";
 import { Component, Vue } from "vue-property-decorator";
 
 @Component({
   components: {},
 })
-export default class NavBar extends Vue {}
+export default class NavBar extends Vue {
+  getAppPath(): string {
+    return SITE_HOSTNAME + this.$store.state.currentLanguage + "/get-app";
+  }
+}
 </script>
 
 <style scoped>
@@ -57,7 +68,7 @@ export default class NavBar extends Vue {}
   height: 400px;
   display: flex;
   margin-top: 200px;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
   justify-content: center;
 }
 .foot-container {

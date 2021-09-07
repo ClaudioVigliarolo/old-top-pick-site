@@ -3,6 +3,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import Questions from "../views/Questions.vue";
+import GetApp from "../views/GetApp.vue";
 
 Vue.use(VueRouter);
 
@@ -18,15 +19,10 @@ const routes: Array<RouteConfig> = [
     name: "Questions",
     component: Questions,
   },
-
   {
-    path: "/:lang/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/:lang/get-app",
+    name: "GetApp",
+    component: GetApp,
   },
 
   { path: "/", redirect: (to) => `/${Lang.EN}` },

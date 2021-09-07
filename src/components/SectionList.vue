@@ -81,6 +81,7 @@ export default class SectionList extends Vue {
   max-width: 280px;
   min-width: 200px;
   font-size: 30px;
+  border-width: 0px;
   border-bottom: solid 4px orange;
   border-image: linear-gradient(to left, orange, orange);
   border-image-slice: 1;

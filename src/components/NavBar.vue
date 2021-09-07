@@ -7,9 +7,7 @@
     <div class="navbar-bar-default" id="app-navbar">
       <ul class="sections-list">
         <li class="section-item">
-          <router-link class="section-item-text" to="/get-app"
-            >Get The App</router-link
-          >
+          <a class="section-item-text" :href="getAppPath()"> Get The App </a>
         </li>
       </ul>
       <div class="language-input-container">
@@ -32,6 +30,7 @@
 </template>
 
 <script lang="ts">
+import { SITE_HOSTNAME } from "@/constants/constants";
 import { Lang } from "@/interfaces/interfaces";
 import { ActionTypes, MutationTypes } from "@/store";
 import { getLanguageLabel } from "@/utils/utilts";
@@ -55,6 +54,10 @@ export default class NavBar extends Vue {
 
   getLanguageLabel(lang: Lang) {
     return getLanguageLabel(lang);
+  }
+
+  getAppPath(): string {
+    return SITE_HOSTNAME + this.$store.state.currentLanguage + "/get-app";
   }
 
   toggleNavbar() {
