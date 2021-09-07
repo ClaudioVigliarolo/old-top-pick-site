@@ -4,4 +4,4 @@ export const API_HOSTNAME = "https://top-pick-api.herokuapp.com"; //" http://loc
 export const SITE_HOSTNAME =
   process.env.NODE_ENV === "production"
     ? "https://top-pick.com"
-    : "http://localhost:8080/";
+    : "http://localhost:8080";

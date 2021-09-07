@@ -58,7 +58,7 @@ import { Component, Vue } from "vue-property-decorator";
 })
 export default class NavBar extends Vue {
   getAppPath(): string {
-    return SITE_HOSTNAME + this.$store.state.currentLanguage + "/get-app";
+    return SITE_HOSTNAME + "/" + this.$store.state.currentLanguage + "/get-app";
   }
 }
 </script>
