@@ -47,6 +47,7 @@ export default class SectionList extends Vue {
   flex-direction: column;
   margin-top: 20px;
   border-radius: 5px;
+  min-height: 400px;
 }
 
 .container {

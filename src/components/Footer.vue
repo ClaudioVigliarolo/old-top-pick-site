@@ -3,36 +3,42 @@
     <div class="foot-container">
       <div class="foot-item-contacts">
         <h4 class="foot-item-header">Contacts:</h4>
-        <dev class="foot-item-content-title">
+        <div class="foot-item-content-title">
           Email:
           <span class="foot-item-content-value"> top-pick@mail.com </span>
-        </dev>
-        <dev class="foot-item-content-title">
-          Developer:
+        </div>
+        <div class="foot-item-content-title">
+          diveloper:
           <span class="foot-item-content-value">
             claudio.vigliarolo@techie.com
           </span>
-        </dev>
-        <dev class="foot-item-content-title line-container">
+        </div>
+        <div class="foot-item-content-title line-container">
           Follow us on Instagram:
           <a-icon
             type="instagram"
             style="color: white; cursor: pointer"
             onclick=" window.open('https://www.instagram.com/topick.community/','_blank')"
           />
-        </dev>
+        </div>
       </div>
       <div class="foot-item-section">
         <h4 class="foot-item-header">Sections:</h4>
+        <router-link class="foot-item-section-text" to="/get-app">
+          Get The App
+        </router-link>
+        <router-link class="foot-item-section-text" to="/donation">
+          Support us
+        </router-link>
       </div>
       <div class="foot-item-info">
         <h4 class="foot-item-header">General Informations:</h4>
-        <dev class="foot-item-info-text">
+        <div class="foot-item-info-text">
           Top Pick is a company designed for helping people find great topics
-        </dev>
-        <dev class="foot-item-info-text">
+        </div>
+        <div class="foot-item-info-text">
           &copy; Copyright {{ new Date().getFullYear() }}, TopPick Company
-        </dev>
+        </div>
       </div>
     </div>
   </div>
@@ -48,9 +54,10 @@ export default class NavBar extends Vue {}
 
 <style scoped>
 .container {
-  height: 300px;
+  height: 400px;
   display: flex;
-  margin-top: 50px;
+  margin-top: 200px;
+  padding-bottom: 100px;
   justify-content: center;
 }
 .foot-container {
@@ -66,7 +73,7 @@ export default class NavBar extends Vue {}
 .foot-item-header {
   color: white;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-size: 20px;
 }
 .foot-item-content-title {
@@ -83,6 +90,10 @@ export default class NavBar extends Vue {}
   text-align: center;
 }
 
+.foot-item-section-text {
+  color: white;
+  text-align: left;
+}
 .foot-item-contacts {
   display: flex;
   flex-direction: column;
@@ -93,6 +104,7 @@ export default class NavBar extends Vue {}
   display: flex;
   flex-direction: column;
   padding: 10px;
+  max-width: 400px;
 }
 
 .line-container {

@@ -1,28 +1,32 @@
 <template>
-  <div class="navbar">
-    <div class="navbar-brand">
+  <div class="content-container">
+    <div class="navbar-brand-container">
       <a class="text-brand" href="/">TOP Pick</a>
     </div>
 
-    <div class="navbar-sections">
+    <div class="navbar-bar-default" id="app-navbar">
       <ul class="sections-list">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
+        <li class="section-item">
+          <router-link class="section-item-text" to="/get-app"
+            >Get The App</router-link
+          >
+        </li>
       </ul>
+      <div class="language-input-container">
+        <select v-model="currentLanguage" class="language-input">
+          <option
+            v-for="lang in languages"
+            :value="lang"
+            v-bind:key="lang"
+            :selected="lang === currentLanguage"
+          >
+            {{ getLanguageLabel(lang) }}
+          </option>
+        </select>
+      </div>
     </div>
-    <div class="navbar-language">
-      <select v-model="currentLanguage" class="language-input">
-        <option
-          v-for="lang in languages"
-          :value="lang"
-          v-bind:key="lang"
-          :selected="lang === currentLanguage"
-        >
-          {{ getLanguageLabel(lang) }}
-        </option>
-      </select>
+    <div class="icon-container">
+      <a-icon type="menu" class="menu-icon" @click="toggleNavbar()" />
     </div>
   </div>
 </template>
@@ -52,46 +56,58 @@ export default class NavBar extends Vue {
   getLanguageLabel(lang: Lang) {
     return getLanguageLabel(lang);
   }
+
+  toggleNavbar() {
+    var x = document.getElementById("app-navbar");
+    if (x.className === "navbar-bar-default") {
+      x.className = "navbar-bar-opened";
+    } else {
+      x.className = "navbar-bar-default";
+    }
+  }
 }
 </script>
 
 <style scoped>
-.navbar {
-  display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
-  background-color: red;
-}
-
-.navbar-sections {
-  display: flex;
-  background-color: blue;
-  flex-direction: row;
-}
-.navbar-language {
-  display: flex;
-  flex-direction: column;
-}
-
 .text-brand {
   text-decoration: none;
   color: white;
   font-size: 25px;
-}
-.navbar-brand {
-  display: flex;
-  background-color: pink;
-  padding-left: 15px;
-}
-
-.sections-list {
   text-align: left;
-  display: inline-block;
-  list-style-type: none;
+}
+.navbar-brand-container {
+  width: 200px;
+  display: flex;
+}
 
+.content-container {
   display: flex;
   flex-direction: row;
-  align-self: flex-end;
-  background-color: aqua;
+  margin-bottom: 50px;
+  padding: 15px;
+  width: 100%;
+}
+
+.icon-container {
+  display: none;
+}
+.menu-icon {
+  font-size: 20px;
+  margin: 10px;
+  color: white;
+}
+.sections-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.section-item {
+  margin-left: 50px;
+  font-size: 17px;
+}
+.section-item-text {
+  color: white;
 }
 
 .language-input {
@@ -99,16 +115,79 @@ export default class NavBar extends Vue {
   color: white;
   border-width: 0;
   font-size: 18px;
-  width: 150px;
 }
 
+.language-input-container {
+  width: 100px;
+  float: right;
+}
 .brand {
-  color: white !important;
+  color: white;
   font-size: 30px;
   margin-left: 10px;
 }
 .language-input:focus {
   border-style: inset;
   outline-color: orange;
+}
+
+.navbar-bar-default {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 800px) {
+  .content-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .navbar-bar-default {
+    display: none;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .navbar-bar-opened {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10000;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding: 10px;
+    background-color: rgb(237, 154, 1);
+  }
+
+  .sections-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .icon-container {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .section-item {
+    margin-left: 0px;
+    margin-top: 10px;
+  }
+
+  .language-input-container {
+    float: none;
+    align-self: center;
+    margin-left: 50px;
+  }
 }
 </style>
