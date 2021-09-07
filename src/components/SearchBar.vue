@@ -44,7 +44,7 @@
 <script lang="ts">
 import { Category, Lang, TopicLevel } from "@/interfaces/interfaces";
 import { Component, Vue } from "vue-property-decorator";
-import { getLevelLabel } from "@/utils/utilts";
+import { getLevelLabel } from "@/utils/utils";
 import { MutationTypes } from "@/store";
 
 @Component({
@@ -107,6 +107,12 @@ export default class SearchBar extends Vue {
   text-transform: capitalize;
   border-radius: 3px;
 }
+
+.select-input:focus {
+  border-style: inset;
+  outline-color: orange;
+}
+
 .text-input {
   width: 250px;
   height: 40px;
@@ -136,10 +142,5 @@ export default class SearchBar extends Vue {
   .text-input {
     width: 300px;
   }
-}
-
-.select-input:focus {
-  border-style: inset;
-  outline-color: orange;
 }
 </style>

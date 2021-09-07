@@ -6,12 +6,11 @@ import {
   getCategories,
   getTopicsAlphabetical,
 } from "@/utils/api";
-import { getLangUrl } from "@/utils/utilts";
+import { getLangUrl } from "@/utils/utils";
 import { Lang } from "@/interfaces/interfaces";
 import { SITE_HOSTNAME } from "@/constants/constants";
 
 export enum ActionTypes {
-  ALERT = "ALERT",
   STARTUP = "STARTUP",
   GET_TOPICS = "GET_TOPICS",
   GET_LANGS = "GET_LANGS",
@@ -28,37 +27,15 @@ type AugmentedActionContext = {
 } & Omit<ActionContext<State, State>, "commit">;
 
 export interface Actions {
-  [ActionTypes.ALERT](
-    { dispatch }: AugmentedActionContext,
-    payload: { message: string; alertType?: AlertType }
-  ): void;
   [ActionTypes.STARTUP]({ commit }: AugmentedActionContext): Promise<void>;
 }
 
-export enum AlertType {
-  NONE,
-  ERROR_ALERT,
-  ERRORS_QUEUE,
-}
-
 export const actions: ActionTree<State, State> & Actions = {
-  [ActionTypes.ALERT]({ dispatch }, { message, alertType }) {
-    switch (alertType) {
-      case AlertType.ERROR_ALERT:
-        break;
-      case AlertType.ERRORS_QUEUE:
-        break;
-      default:
-        break;
-    }
-  },
-
   async [ActionTypes.GET_TOPICS]({ commit, state }) {
     const retrievedTopics = await getTopicsAlphabetical(state.currentLanguage);
     if (retrievedTopics != null) {
       commit(MutationTypes.SET_TOPICS, retrievedTopics);
     }
-    //todo error handling
   },
 
   async [ActionTypes.GET_LANGS]({ commit }) {
@@ -92,7 +69,7 @@ export const actions: ActionTree<State, State> & Actions = {
   },
 
   async [ActionTypes.SET_CURR_LANGUAGE]({ dispatch, state }, currentLanguage) {
-    document.location.href = SITE_HOSTNAME + currentLanguage;
+    document.location.href = SITE_HOSTNAME + "/" + currentLanguage;
     state.currentLanguage = currentLanguage;
     dispatch(ActionTypes.CONTEXT_RELOAD);
   },

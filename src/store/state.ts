@@ -2,7 +2,6 @@ import { DEFAULT_CATEGORY_ID, DEFAULT_LEVEL } from "@/constants/constants";
 import { Category, Lang, Topic, TopicLevel } from "@/interfaces/interfaces";
 
 export interface State {
-  toast: { message: string; color: string } | null;
   searchKeyword: string;
   topics: Topic[];
   categories: Category[];
@@ -13,7 +12,6 @@ export interface State {
 }
 
 export const state: State = {
-  toast: null,
   searchKeyword: "",
   categories: [],
   topics: [],

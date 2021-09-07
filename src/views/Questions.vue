@@ -53,7 +53,7 @@ import {
   getTopicLevelLabel,
   getTopicLevelColor,
   downloadPDF,
-} from "../utils/utilts";
+} from "../utils/utils";
 import SectionList from "../components/SectionList.vue";
 
 @Component({

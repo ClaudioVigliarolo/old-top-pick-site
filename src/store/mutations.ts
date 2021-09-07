@@ -4,7 +4,6 @@ import { MutationTree } from "vuex";
 import { State } from "./state";
 
 export enum MutationTypes {
-  SET_TOAST = "SET_TOAST",
   SET_TOPICS = "SET_TOPICS",
   SET_LANGUAGES = "SET_LANGUAGES",
   SET_CURR_LANGUAGE = "SET_CURR_LANGUAGE",

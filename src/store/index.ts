@@ -7,7 +7,6 @@ import { Mutations, mutations } from "./mutations";
 import { Actions, actions } from "./actions";
 
 export { MutationTypes } from "./mutations";
-export { ActionTypes, AlertType } from "./actions";
 
 Vue.use(Vuex);
 

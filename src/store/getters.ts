@@ -1,20 +1,15 @@
 import { DEFAULT_CATEGORY_ID, DEFAULT_LEVEL } from "@/constants/constants";
+import { Section } from "@/interfaces/interfaces";
 import { sectionTopicListSort } from "@/utils/sorting";
-import { isStrBlank } from "@/utils/utilts";
+import { isStrBlank } from "@/utils/utils";
 import { GetterTree } from "vuex";
 import { State } from "./state";
 
 export type Getters = {
-  roleIcon(state: State): string | null;
+  displayedTopics(state: State): Section[];
 };
 
 export const getters: GetterTree<State, State> & Getters = {
-  role: (state) => {
-    return null;
-  },
-  roleIcon: (state) => {
-    return null;
-  },
   displayedTopics: (state) => {
     let all = true;
 

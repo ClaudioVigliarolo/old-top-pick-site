@@ -3,8 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import Antd from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
-import store, { ActionTypes } from "@/store";
+import store from "@/store";
 import "./styles/styles.css";
+import { ActionTypes } from "./store/actions";
 
 async function main() {
   await store.dispatch(ActionTypes.STARTUP);

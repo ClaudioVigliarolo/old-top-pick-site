@@ -12,12 +12,11 @@
 </template>
 
 <script lang="ts">
-import { Category, Lang, Section, Topic } from "@/interfaces/interfaces";
+import { Topic } from "@/interfaces/interfaces";
 import { Component, Vue } from "vue-property-decorator";
 import SearchBar from "../components/SearchBar.vue";
 import SectionList from "../components/SectionList.vue";
 import Footer from "../components/Footer.vue";
-import { ActionTypes, MutationTypes } from "@/store";
 @Component({
   components: {
     SectionList,

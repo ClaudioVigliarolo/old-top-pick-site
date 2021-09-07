@@ -32,8 +32,8 @@
 <script lang="ts">
 import { SITE_HOSTNAME } from "@/constants/constants";
 import { Lang } from "@/interfaces/interfaces";
-import { ActionTypes, MutationTypes } from "@/store";
-import { getLanguageLabel } from "@/utils/utilts";
+import { ActionTypes } from "@/store/actions";
+import { getLanguageLabel } from "@/utils/utils";
 import { Component, Vue } from "vue-property-decorator";
 
 @Component({
